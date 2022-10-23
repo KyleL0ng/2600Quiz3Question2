@@ -1,10 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdarg.h>
 #include <time.h>
 
-int main(double taxPercent, double tipPercent)
+int main(int argc, char *argv[])
 {
     // set up needed variables
+    char *eptr;
+    double taxPercent = strtod(argv[1], &eptr);
+    double tipPercent = strtod(argv[2], &eptr);
     double mealCost = 0;
     double tipCost = 0;
     double taxCost = 0;
@@ -39,8 +43,10 @@ int main(double taxPercent, double tipPercent)
     totalCost = mealCost + tipCost + taxCost;
 
     // print the meal cost, tax amount, tip amount, and total
-    printf("The meal costs %d\n", mealCost);
-    printf("The tax costs %d\n", taxCost);
-    printf("The tip costs %d\n", tipCost);
-    printf("The bill's total comes out to: %d", totalCost);
+    printf("The meal costs %f\n", mealCost);
+    printf("The tax costs %f\n", taxCost);
+    printf("The tip costs %f\n", tipCost);
+    printf("The bill's total comes out to: %f", totalCost);
+
+    return EXIT_SUCCESS;
 }
